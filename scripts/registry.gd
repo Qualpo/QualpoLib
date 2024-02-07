@@ -12,7 +12,8 @@ func GetValue(key):
 	else:
 		print("no value with key " + key)
 		return null
-
+func GetAllValues() -> Array:
+	return entries.values()
 func RemoveEntry(key):
 	if entries.has(key):
 		entries.erase(key)
