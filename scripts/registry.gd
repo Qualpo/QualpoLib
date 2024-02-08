@@ -1,7 +1,7 @@
 extends Resource
 class_name Registry
 
-@export var entries = {}
+@export var entries : Dictionary = {}
 
 
 func AddEntry(key,value):
