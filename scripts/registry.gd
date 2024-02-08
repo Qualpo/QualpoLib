@@ -18,6 +18,10 @@ func GetAllKeys() -> Array:
 	return entries.keys()
 func GetLength() -> int:
 	return entries.size()
+func GetRandomKey():
+	return entries.keys().pick_random()
+func GetRandomValue():
+	return entries.values().pick_random()
 func RemoveEntry(key) -> void:
 	if entries.has(key):
 		entries.erase(key)
