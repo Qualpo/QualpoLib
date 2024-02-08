@@ -14,6 +14,8 @@ func GetValue(key):
 		return null
 func GetAllValues() -> Array:
 	return entries.values()
+func GetAllKeys() -> Array:
+	return entries.keys()
 func GetLength() -> int:
 	return entries.size()
 func RemoveEntry(key) -> void:
