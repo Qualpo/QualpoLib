@@ -1,5 +1,5 @@
 extends Node
-class_name Shake
+class_name Shaker
 
 
 
