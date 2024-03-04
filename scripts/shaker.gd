@@ -18,20 +18,30 @@ func shake(magnitude:float, override = true):
 		Magnitude += magnitude 
 
 func _process(delta):
+	shaking(delta)
+func shaking(delta):
 	if Magnitude > 0.01:
 		ShakeTime += delta
 		var lb = 1 - pow(0.5, delta*60  *lerp_amount)
 		Magnitude = lerp(Magnitude,0.0,lb)
 		if shaker is Node2D or shaker is Control:
-			shaker.position.x = cos(ShakeTime * 100) * Magnitude
-			shaker.position.y = sin(ShakeTime* 75) * Magnitude
+			shaker.position = shake2d()
 		elif shaker is Node3D:
-			shaker.position.x = cos(ShakeTime * 100) * Magnitude
-			shaker.position.y = sin(ShakeTime* 75) * Magnitude
-			shaker.position.z = cos(ShakeTime* 75) * Magnitude
+			shaker.position = shake3d()
 	else:
 		if shaker is Node2D or shaker is Control:
 			shaker.position = Vector2(0,0)
 		elif shaker is Node3D:
 			shaker.position = Vector3()
 		emit_signal("shake_finished")
+func shake2d()-> Vector2:
+	var vec = Vector2()
+	vec.x = cos(ShakeTime * 100) * Magnitude
+	vec.y = sin(ShakeTime* 75) * Magnitude
+	return vec
+func shake3d()->Vector3:
+	var vec = Vector3()
+	vec.x = cos(ShakeTime * 100) * Magnitude
+	vec.y = sin(ShakeTime* 75) * Magnitude
+	vec.z = cos(ShakeTime* 75) * Magnitude
+	return vec
