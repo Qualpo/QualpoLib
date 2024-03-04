@@ -4,7 +4,6 @@ class_name Shaker
 
 
 @export var shaker : Node
-@export var lerp_amount = 0.1
 var Magnitude = 0.0
 var ShakeTime = 0.0
 
@@ -17,11 +16,10 @@ func shake(magnitude:float, override = true):
 	else:
 		Magnitude += magnitude 
 
-func _process(delta):
+func _physics_process(delta):
 	if Magnitude > 0.01:
 		ShakeTime += delta
-		var lb = 1 - pow(0.5, delta*60  *lerp_amount)
-		Magnitude = lerp(Magnitude,0.0,lb)
+		Magnitude = lerp(Magnitude,0.0,0.1)
 		if shaker is Node2D or shaker is Control:
 			shaker.position.x = cos(ShakeTime * 100) * Magnitude
 			shaker.position.y = sin(ShakeTime* 75) * Magnitude
