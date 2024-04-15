@@ -38,11 +38,11 @@ func shaking(delta):
 func shake2d()-> Vector2:
 	var vec = Vector2()
 	vec.x = cos(ShakeTime * frequency.x) * Magnitude
-	vec.y = sin(ShakeTime* frequency.y) * Magnitude
+	vec.y = cos(ShakeTime* frequency.y) * Magnitude
 	return vec
 func shake3d()->Vector3:
 	var vec = Vector3()
 	vec.x = cos(ShakeTime * 100) * Magnitude
-	vec.y = sin(ShakeTime* 75) * Magnitude
+	vec.y = cos(ShakeTime* 75) * Magnitude
 	vec.z = cos(ShakeTime* 75) * Magnitude
 	return vec
