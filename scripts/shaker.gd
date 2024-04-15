@@ -5,6 +5,7 @@ class_name Shaker
 
 @export var shaker : Node
 @export var lerp_amount = 0.1
+@export var frequency = Vector2(100,75)
 var Magnitude = 0.0
 var ShakeTime = 0.0
 
@@ -36,8 +37,8 @@ func shaking(delta):
 		emit_signal("shake_finished")
 func shake2d()-> Vector2:
 	var vec = Vector2()
-	vec.x = cos(ShakeTime * 100) * Magnitude
-	vec.y = sin(ShakeTime* 75) * Magnitude
+	vec.x = cos(ShakeTime * frequency.x) * Magnitude
+	vec.y = sin(ShakeTime* frequency.y) * Magnitude
 	return vec
 func shake3d()->Vector3:
 	var vec = Vector3()
